@@ -30,3 +30,4 @@ export telemetry_advertised_host=trout-docker-unedited
 
 npm start
 #tsc && node --max_old_space_size=8192 index run --startHeight 604260
+#tsc && node --max_old_space_size=28000 index run

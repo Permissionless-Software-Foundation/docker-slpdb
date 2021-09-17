@@ -34,7 +34,7 @@ CMD ["node", "dummyapp.js"]
 
 # SLPDB specific packages
 RUN apt-get install -y autoconf libtool
-RUN npm install -g typescript
+RUN npm install -g typescript@4.3.5
 
 #Setup NPM for non-root global install (like on a mac)
 RUN mkdir /home/safeuser/.npm-global
@@ -44,19 +44,20 @@ RUN runuser -l safeuser -c "npm config set prefix '~/.npm-global'"
 
 
 # Switch to user account.
-USER safeuser
+#USER safeuser
 # Prep 'sudo' commands.
 #RUN echo 'abcd8765' | sudo -S pwd
 
 # Clone the SLPDB repository
 WORKDIR /home/safeuser
-#RUN git clone https://github.com/christroutner/SLPDB
-RUN git clone https://github.com/simpleledger/SLPDB
+RUN git clone https://github.com/christroutner/SLPDB
+#RUN git clone https://github.com/simpleledger/SLPDB
 
 # Checkout the last QA'd version.
 WORKDIR /home/safeuser/SLPDB
 #RUN git checkout f1f48a3b7a852e24fd26b3baf6df65b47de6d89e
-RUN git checkout 9a85b1bd381a82e6d2094d6936774ee5a4503de3
+#RUN git checkout 9a85b1bd381a82e6d2094d6936774ee5a4503de3
+RUN git checkout ct-unstable
 
 # Install dependencies.
 RUN npm install

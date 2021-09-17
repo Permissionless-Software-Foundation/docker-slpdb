@@ -7,7 +7,7 @@ mongodb:
     - "12301:27017"
   volumes:
     - ../data/mongodb:/data/db
-  command: mongod --logpath=/dev/null # -- quiet
+  #command: mongod --logpath=/dev/null # -- quiet
   restart: always
 
 slpdb:
@@ -19,7 +19,8 @@ slpdb:
     - mongodb
   volumes:
     - ../data/leveldb:/home/safeuser/SLPDB/_leveldb
-    - ../config:/home/safeuser/config
+   # - ../config:/home/safeuser/config
+    - ../config:/root/config
   restart: always
 
 slpserve:

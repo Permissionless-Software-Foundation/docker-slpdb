@@ -8,6 +8,8 @@ mongodb:
   volumes:
     - ../data/mongodb:/data/db
   #command: mongod --logpath=/dev/null # -- quiet
+  # Adjust the max size of memory in GB that MongoDB should use for cache
+  command: mongod --wiredTigerCacheSizeGB 8.192
   restart: always
 
 slpdb:
